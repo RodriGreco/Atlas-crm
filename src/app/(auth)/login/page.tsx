@@ -3,130 +3,200 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { getSupabaseClient } from '@/lib/supabase/client'
 
-function AtlasGlobeBig() {
+function AtlasGlobe() {
   return (
-    <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-      <circle cx="36" cy="36" r="32" stroke="#3a9a87" strokeWidth="1.4" opacity=".55"/>
-      <ellipse cx="36" cy="36" rx="16" ry="32" stroke="#3a9a87" strokeWidth="1.1" opacity=".38"/>
-      <line x1="4" y1="36" x2="68" y2="36" stroke="#3a9a87" strokeWidth="1" opacity=".28"/>
-      <line x1="36" y1="4" x2="36" y2="68" stroke="#3a9a87" strokeWidth="1" opacity=".22"/>
-      <circle cx="36" cy="13" r="2.5" fill="#c4843a" opacity=".9"/>
-      <circle cx="54" cy="24" r="2"   fill="#3a9a87" opacity=".8"/>
-      <circle cx="18" cy="50" r="2"   fill="#3a9a87" opacity=".7"/>
-      <circle cx="52" cy="54" r="2.5" fill="#c4843a" opacity=".85"/>
-      <circle cx="15" cy="25" r="1.8" fill="#3a9a87" opacity=".65"/>
-      <circle cx="36" cy="38" r="3"   fill="#5ab8a2" opacity=".9"/>
-      <line x1="36" y1="13" x2="54" y2="24" stroke="#c4843a" strokeWidth="1.1" opacity=".5"/>
-      <line x1="54" y1="24" x2="52" y2="54" stroke="#3a9a87" strokeWidth="1" opacity=".38"/>
-      <line x1="36" y1="13" x2="18" y2="50" stroke="#3a9a87" strokeWidth="1" opacity=".38"/>
-      <line x1="18" y1="50" x2="52" y2="54" stroke="#3a9a87" strokeWidth="1" opacity=".35"/>
-      <line x1="36" y1="38" x2="54" y2="24" stroke="#5ab8a2" strokeWidth=".9" opacity=".48"/>
-      <line x1="36" y1="38" x2="18" y2="50" stroke="#5ab8a2" strokeWidth=".9" opacity=".42"/>
-      <line x1="15" y1="25" x2="36" y2="38" stroke="#3a9a87" strokeWidth=".8" opacity=".35"/>
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="36" stroke="#f5f5f5" strokeWidth="1.2" opacity=".35"/>
+      <ellipse cx="40" cy="40" rx="18" ry="36" stroke="#f5f5f5" strokeWidth="0.9" opacity=".22"/>
+      <ellipse cx="40" cy="40" rx="36" ry="14" stroke="#f5f5f5" strokeWidth="0.9" opacity=".22"/>
+      <path d="M10 22 Q40 10 70 28" stroke="#f5f5f5" strokeWidth="1" opacity=".28" fill="none"/>
+      <path d="M8 52 Q40 65 72 48" stroke="#f5f5f5" strokeWidth="1" opacity=".28" fill="none"/>
+      <path d="M22 8 Q55 25 65 65" stroke="#c8a96b" strokeWidth="1" opacity=".45" fill="none"/>
+      <path d="M58 10 Q25 35 15 68" stroke="#f5f5f5" strokeWidth="0.9" opacity=".22" fill="none"/>
+      <circle cx="40" cy="14" r="2.5" fill="#c8a96b" opacity=".9"/>
+      <circle cx="62" cy="26" r="2" fill="#f5f5f5" opacity=".7"/>
+      <circle cx="18" cy="55" r="2" fill="#f5f5f5" opacity=".7"/>
+      <circle cx="58" cy="60" r="2.5" fill="#c8a96b" opacity=".85"/>
+      <circle cx="16" cy="27" r="1.8" fill="#f5f5f5" opacity=".6"/>
+      <circle cx="40" cy="42" r="3" fill="#0f766e" opacity=".9"/>
+      <line x1="40" y1="14" x2="62" y2="26" stroke="#c8a96b" strokeWidth="1" opacity=".5"/>
+      <line x1="62" y1="26" x2="58" y2="60" stroke="#f5f5f5" strokeWidth="0.9" opacity=".35"/>
+      <line x1="40" y1="14" x2="18" y2="55" stroke="#f5f5f5" strokeWidth="0.9" opacity=".35"/>
+      <line x1="18" y1="55" x2="58" y2="60" stroke="#f5f5f5" strokeWidth="0.9" opacity=".3"/>
+      <line x1="40" y1="42" x2="62" y2="26" stroke="#0f766e" strokeWidth="0.9" opacity=".48"/>
+      <line x1="40" y1="42" x2="18" y2="55" stroke="#0f766e" strokeWidth="0.9" opacity=".42"/>
+      <line x1="16" y1="27" x2="40" y2="42" stroke="#f5f5f5" strokeWidth="0.8" opacity=".3"/>
+    </svg>
+  )
+}
+
+function GoogleIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
     </svg>
   )
 }
 
 export default function LoginPage() {
   const router = useRouter()
-  const [email, setEmail]       = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading]   = useState(false)
-  const [error, setError]       = useState('')
-  const [mode, setMode]         = useState<'login'|'signup'>('login')
+  const [loading, setLoading] = useState(false)
+  const [googleLoading, setGoogleLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleEmailLogin(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true); setError('')
     const sb = getSupabaseClient()
-
-    if (mode === 'signup') {
-      const { error } = await sb.auth.signUp({ email, password })
-      if (error) { setError(error.message); setLoading(false); return }
-      setError('Verifique seu email para confirmar o cadastro.')
-      setLoading(false); return
-    }
-
     const { error } = await sb.auth.signInWithPassword({ email, password })
     if (error) { setError(error.message); setLoading(false); return }
     router.push('/dashboard'); router.refresh()
   }
 
+  async function handleGoogleLogin() {
+    setGoogleLoading(true); setError('')
+    const sb = getSupabaseClient()
+    const { error } = await sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    })
+    if (error) { setError(error.message); setGoogleLoading(false) }
+  }
+
   const inp: React.CSSProperties = {
-    width: '100%', padding: '10px 14px',
-    background: 'rgba(10,30,30,.8)', border: '1px solid rgba(42,122,106,.25)',
-    borderRadius: 8, color: '#e8f4f0', fontSize: 14,
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    width: '100%', padding: '11px 14px',
+    background: 'rgba(20,22,26,0.9)',
+    border: '1px solid rgba(200,169,107,0.2)',
+    borderRadius: 8, color: '#f5f5f5', fontSize: 14,
+    fontFamily: "'Inter', sans-serif",
     outline: 'none', transition: 'border-color .15s',
   }
 
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #060f0f 0%, #0a1f1f 40%, #0d1a10 100%)',
+      background: 'linear-gradient(135deg, #080809 0%, #0b0b0d 50%, #0d1520 100%)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontFamily: "'Plus Jakarta Sans', sans-serif",
+      fontFamily: "'Inter', sans-serif",
       position: 'relative', overflow: 'hidden',
     }}>
-      {/* Ambient glow */}
-      <div style={{ position:'fixed', top:'-20%', right:'-10%', width:'50vw', height:'50vw', background:'radial-gradient(ellipse, rgba(196,132,58,0.08) 0%, transparent 65%)', pointerEvents:'none' }} />
-      <div style={{ position:'fixed', bottom:'-20%', left:'-10%', width:'55vw', height:'55vw', background:'radial-gradient(ellipse, rgba(42,122,106,0.07) 0%, transparent 65%)', pointerEvents:'none' }} />
+      <div style={{ position:'fixed', top:'-20%', left:'-10%', width:'55vw', height:'55vw', background:'radial-gradient(ellipse, rgba(13,45,62,0.25) 0%, transparent 65%)', pointerEvents:'none' }} />
+      <div style={{ position:'fixed', bottom:'-25%', right:'-10%', width:'50vw', height:'50vw', background:'radial-gradient(ellipse, rgba(200,169,107,0.08) 0%, transparent 65%)', pointerEvents:'none' }} />
 
       <div style={{ width:'100%', maxWidth:420, padding:'0 24px', position:'relative', zIndex:1 }}>
         {/* Logo */}
-        <div style={{ textAlign:'center', marginBottom:36 }}>
-          <div style={{ display:'inline-flex', flexDirection:'column', alignItems:'center', gap:10 }}>
-            <AtlasGlobeBig />
-            <div style={{ fontFamily:"'Rajdhani', sans-serif", fontWeight:700, fontSize:32, letterSpacing:'6px', color:'#e8f4f0', lineHeight:1, textTransform:'uppercase' as const }}>ATLAS</div>
-            <div style={{ fontSize:10, color:'#c4843a', letterSpacing:'3px', textTransform:'uppercase' as const, fontWeight:600 }}>CRM PLATFORM</div>
+        <div style={{ textAlign:'center', marginBottom:40 }}>
+          <div style={{ display:'inline-flex', flexDirection:'column', alignItems:'center', gap:12 }}>
+            <AtlasGlobe />
+            <div style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 300,
+              fontSize: 36,
+              letterSpacing: '12px',
+              color: '#f5f5f5',
+              lineHeight: 1,
+              textTransform: 'uppercase' as const,
+            }}>ATLAS</div>
+            <div style={{ fontSize:10, color:'#c8a96b', letterSpacing:'3px', textTransform:'uppercase' as const, fontWeight:500 }}>
+              CRM PLATFORM
+            </div>
           </div>
-          <p style={{ fontSize:13.5, color:'#8ab8aa', marginTop:14 }}>
-            {mode === 'login' ? 'Entre na sua conta' : 'Crie sua conta'}
+          <p style={{ fontSize:13, color:'#a0a0a8', marginTop:16 }}>
+            Faça login para continuar
           </p>
         </div>
 
         {/* Card */}
-        <div style={{ background:'rgba(13,32,32,.85)', border:'1px solid rgba(42,122,106,.22)', borderRadius:16, padding:'28px 26px', backdropFilter:'blur(12px)' }}>
-          <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:14 }}>
+        <div style={{
+          background: 'rgba(14,14,17,0.85)',
+          border: '1px solid rgba(200,169,107,0.18)',
+          borderRadius: 16,
+          padding: '28px 26px',
+          backdropFilter: 'blur(16px)',
+          boxShadow: '0 4px 40px rgba(0,0,0,0.4)',
+        }}>
+
+          {/* Google Login */}
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            disabled={googleLoading}
+            style={{
+              width: '100%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+              padding: '12px',
+              background: googleLoading ? 'rgba(30,32,38,0.5)' : 'rgba(30,32,38,0.8)',
+              border: '1px solid rgba(200,169,107,0.25)',
+              borderRadius: 8,
+              color: '#f5f5f5',
+              fontSize: 14, fontWeight: 500,
+              cursor: googleLoading ? 'not-allowed' : 'pointer',
+              fontFamily: "'Inter', sans-serif",
+              transition: 'all .15s',
+              marginBottom: 20,
+            }}
+          >
+            {googleLoading ? (
+              <span style={{ opacity:.6 }}>Redirecionando...</span>
+            ) : (
+              <>
+                <GoogleIcon />
+                Entrar com Google
+              </>
+            )}
+          </button>
+
+          {/* Divider */}
+          <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:20 }}>
+            <div style={{ flex:1, height:1, background:'rgba(200,169,107,0.12)' }} />
+            <span style={{ fontSize:11, color:'#5a5a66', letterSpacing:'.5px' }}>OU</span>
+            <div style={{ flex:1, height:1, background:'rgba(200,169,107,0.12)' }} />
+          </div>
+
+          {/* Email/Password form */}
+          <form onSubmit={handleEmailLogin} style={{ display:'flex', flexDirection:'column', gap:16 }}>
             <div>
-              <label style={{ display:'block', fontSize:11, fontWeight:600, color:'#4a7a6a', marginBottom:5, textTransform:'uppercase' as const, letterSpacing:'.6px' }}>Email</label>
+              <label style={{ display:'block', fontSize:10, fontWeight:600, color:'#5a5a66', marginBottom:6, textTransform:'uppercase' as const, letterSpacing:'.8px' }}>Email</label>
               <input type="email" value={email} onChange={e=>setEmail(e.target.value)} required placeholder="seu@email.com" style={inp}
-                onFocus={e=>{e.target.style.borderColor='rgba(42,122,106,.6)'}}
-                onBlur={e=>{e.target.style.borderColor='rgba(42,122,106,.25)'}} />
+                onFocus={e=>{ e.target.style.borderColor='rgba(200,169,107,0.5)' }}
+                onBlur={e=>{ e.target.style.borderColor='rgba(200,169,107,0.2)' }} />
             </div>
             <div>
-              <label style={{ display:'block', fontSize:11, fontWeight:600, color:'#4a7a6a', marginBottom:5, textTransform:'uppercase' as const, letterSpacing:'.6px' }}>Senha</label>
+              <label style={{ display:'block', fontSize:10, fontWeight:600, color:'#5a5a66', marginBottom:6, textTransform:'uppercase' as const, letterSpacing:'.8px' }}>Senha</label>
               <input type="password" value={password} onChange={e=>setPassword(e.target.value)} required placeholder="••••••••" style={inp}
-                onFocus={e=>{e.target.style.borderColor='rgba(42,122,106,.6)'}}
-                onBlur={e=>{e.target.style.borderColor='rgba(42,122,106,.25)'}} />
+                onFocus={e=>{ e.target.style.borderColor='rgba(200,169,107,0.5)' }}
+                onBlur={e=>{ e.target.style.borderColor='rgba(200,169,107,0.2)' }} />
             </div>
 
             {error && (
-              <div style={{ background:'rgba(42,122,106,.08)', border:'1px solid rgba(42,122,106,.3)', borderRadius:8, padding:'9px 12px', fontSize:12.5, color:'#8ab8aa' }}>
+              <div style={{ background:'rgba(200,169,107,0.06)', border:'1px solid rgba(200,169,107,0.25)', borderRadius:8, padding:'9px 12px', fontSize:12.5, color:'#d9bc87' }}>
                 {error}
               </div>
             )}
 
             <button type="submit" disabled={loading} style={{
-              marginTop:4, padding:'12px',
-              background: loading ? 'rgba(42,122,106,.3)' : 'linear-gradient(135deg, #2a7a6a, #1f5a4a)',
-              color:'#e8f4f0', border:'1px solid rgba(42,122,106,.4)', borderRadius:8,
-              fontSize:14, fontWeight:600, cursor: loading ? 'not-allowed' : 'pointer',
-              fontFamily:"'Plus Jakarta Sans', sans-serif", transition:'all .15s',
-              letterSpacing:'.5px',
+              padding: '12px',
+              background: loading ? 'rgba(200,169,107,0.15)' : 'linear-gradient(135deg, #c8a96b 0%, #a8884a 100%)',
+              color: loading ? '#a0a0a8' : '#0b0b0d',
+              border: 'none', borderRadius: 8,
+              fontSize: 14, fontWeight: 600,
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontFamily: "'Inter', sans-serif",
+              transition: 'all .15s', letterSpacing: '.5px',
             }}>
-              {loading ? 'Aguarde...' : mode === 'login' ? 'Entrar no Atlas' : 'Criar conta'}
+              {loading ? 'Aguarde...' : 'Entrar com Email'}
             </button>
           </form>
-
-          <div style={{ textAlign:'center', marginTop:18 }}>
-            <button onClick={()=>setMode(mode==='login'?'signup':'login')} style={{ background:'none', border:'none', cursor:'pointer', fontSize:12.5, color:'#3a9a87', fontFamily:"'Plus Jakarta Sans', sans-serif" }}>
-              {mode === 'login' ? 'Não tem conta? Cadastre-se' : 'Já tem conta? Entrar'}
-            </button>
-          </div>
         </div>
 
-        <p style={{ textAlign:'center', marginTop:22, fontSize:11, color:'#2a4a3a', letterSpacing:'.5px' }}>
+        <p style={{ textAlign:'center', marginTop:24, fontSize:11, color:'#3a3a44', letterSpacing:'.5px' }}>
           © 2025 Atlas CRM · Todos os direitos reservados
         </p>
       </div>
