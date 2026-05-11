@@ -1,36 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Atlas brand */
-  --atlas-bg-deep:   #060f0f;
-  --atlas-bg-0:      #0a1a1a;
-  --atlas-bg-1:      #0d2020;
-  --atlas-bg-2:      #112626;
-  --atlas-bg-3:      #183030;
-  --atlas-bg-4:      #1f3a3a;
-  --atlas-teal:      #2a7a6a;
-  --atlas-teal-2:    #3a9a87;
-  --atlas-teal-3:    #5ab8a2;
-  --atlas-amber:     #c4843a;
-  --atlas-amber-2:   #d99a50;
-  --atlas-amber-3:   #f0b870;
-  --border:          rgba(42,122,106,0.18);
-  --border-2:        rgba(42,122,106,0.30);
-  --border-3:        rgba(42,122,106,0.45);
-  --text-1:          #e8f4f0;
-  --text-2:          #8ab8aa;
-  --text-3:          #4a7a6a;
-  --green:           #3ab87a;
-  --red:             #e05555;
-  --amber:           #c4843a;
-  --font:            'Plus Jakarta Sans', sans-serif;
-  --heading:         'Rajdhani', sans-serif;
-  --mono:            'JetBrains Mono', monospace;
-  --radius:          8px;
-  --radius-lg:       12px;
+  /* Atlas brand v2 — baseado na identidade visual oficial */
+  --atlas-bg-deep:     #080809;
+  --atlas-bg-0:        #0b0b0d;
+  --atlas-bg-1:        #0e0e11;
+  --atlas-bg-2:        #14161a;
+  --atlas-bg-3:        #1a1d23;
+  --atlas-bg-4:        #21252d;
+  --atlas-gold:        #c8a96b;
+  --atlas-gold-2:      #d9bc87;
+  --atlas-gold-3:      #e8d0a0;
+  --atlas-teal:        #0f766e;
+  --atlas-teal-2:      #14958b;
+  --atlas-teal-3:      #1ab5a8;
+  --atlas-navy:        #0d2d3e;
+  --atlas-navy-2:      #133a4f;
+  --border:            rgba(200,169,107,0.14);
+  --border-2:          rgba(200,169,107,0.25);
+  --border-3:          rgba(200,169,107,0.40);
+  --text-1:            #f5f5f5;
+  --text-2:            #a0a0a8;
+  --text-3:            #5a5a66;
+  --green:             #22c55e;
+  --red:               #ef4444;
+  --amber:             #c8a96b;
+  --font:              'Inter', sans-serif;
+  --heading:           'Montserrat', sans-serif;
+  --mono:              'JetBrains Mono', monospace;
+  --radius:            8px;
+  --radius-lg:         12px;
 }
 
 * { box-sizing: border-box; }
@@ -46,7 +48,7 @@ html, body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--atlas-bg-4); border-radius: 2px; }
 
-/* Ambient globe glow — fundo */
+/* Ambient glow — fundo sutil dourado/navy */
 body::before {
   content: '';
   position: fixed;
@@ -54,7 +56,7 @@ body::before {
   left: -10%;
   width: 60vw;
   height: 60vw;
-  background: radial-gradient(ellipse, rgba(42,122,106,0.07) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(13,45,62,0.18) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
 }
@@ -65,7 +67,7 @@ body::after {
   right: -10%;
   width: 50vw;
   height: 50vw;
-  background: radial-gradient(ellipse, rgba(196,132,58,0.06) 0%, transparent 65%);
+  background: radial-gradient(ellipse, rgba(200,169,107,0.08) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
 }
@@ -75,19 +77,19 @@ body::after {
 .react-flow__controls { background: var(--atlas-bg-2) !important; border: 1px solid var(--border) !important; border-radius: 8px !important; }
 .react-flow__controls-button { background: var(--atlas-bg-2) !important; border-color: var(--border) !important; color: var(--text-2) !important; fill: var(--text-2) !important; }
 .react-flow__minimap { background: var(--atlas-bg-2) !important; border: 1px solid var(--border) !important; border-radius: 8px !important; }
-.react-flow__edge-path { stroke: rgba(42,122,106,0.5) !important; }
+.react-flow__edge-path { stroke: rgba(200,169,107,0.4) !important; }
 
 /* Animations */
-@keyframes fadeIn  { from { opacity: 0 } to { opacity: 1 } }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
 @keyframes spinGlobe { to { transform: rotate(360deg) } }
 @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:.4 } }
 
-.animate-fade-in { animation: fadeIn  .2s ease-out; }
+.animate-fade-in { animation: fadeIn .2s ease-out; }
 .animate-slide-up { animation: slideUp .25s ease-out; }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--atlas-teal-3), var(--atlas-amber-2));
+  background: linear-gradient(135deg, var(--atlas-gold-2), var(--atlas-teal-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
