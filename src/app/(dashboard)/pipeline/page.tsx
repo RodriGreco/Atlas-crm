@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import { getSupabaseClient } from '@/lib/supabase/client'
 import type { DealWithContact } from '@/lib/supabase/types'
 
-const ORG_ID = 'a1b2c3d4-0000-0000-0000-000000000001'
+// org_id from sessionStorage
+function getOrgId() { return sessionStorage.getItem('org_id') || '' }
 
 const STAGES = [
   { id: 'prospeccao', name: 'Prospecção', color: '#6c63ff' },
@@ -26,7 +27,7 @@ export default function PipelinePage() {
   useEffect(() => {
     supabase.from('deals')
       .select('*, contacts(id,name,email)')
-      .eq('organization_id', ORG_ID)
+      .eq('organization_id', getOrgId())
       .order('created_at', { ascending: false })
       .then(({ data }) => setDeals((data as DealWithContact[]) ?? []))
   }, [supabase])
