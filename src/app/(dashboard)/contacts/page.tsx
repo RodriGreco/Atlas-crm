@@ -4,7 +4,8 @@ import { getSupabaseClient } from '@/lib/supabase/client'
 import type { Contact } from '@/lib/supabase/types'
 import { Search, Upload, Filter, ArrowRight } from 'lucide-react'
 
-const ORG_ID = 'a1b2c3d4-0000-0000-0000-000000000001'
+// org_id from sessionStorage
+function getOrgId() { return sessionStorage.getItem('org_id') || '' }
 
 const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }> = {
   lead:     { bg: 'rgba(108,99,255,.2)', color: 'var(--accent-2)', label: 'Lead' },
@@ -35,7 +36,7 @@ export default function ContactsPage() {
     let query = supabase
       .from('contacts')
       .select('*')
-      .eq('organization_id', ORG_ID)
+      .eq('organization_id', getOrgId())
       .order('lead_score', { ascending: false })
       .limit(100)
 
