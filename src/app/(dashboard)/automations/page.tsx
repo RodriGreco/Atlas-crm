@@ -10,7 +10,8 @@ import { getSupabaseClient } from '@/lib/supabase/client'
 import type { Automation } from '@/lib/supabase/types'
 import { Play, Square, Save, Plus, ChevronDown } from 'lucide-react'
 
-const ORG_ID = 'a1b2c3d4-0000-0000-0000-000000000001'
+// org_id is read from sessionStorage (set by Sidebar on login)
+function getOrgId() { return sessionStorage.getItem('org_id') || '' }
 
 const NODE_STYLES = {
   trigger:       { border: '2px solid #06d6c8', icon: '⚡', color: '#06d6c8', bg: 'rgba(6,214,200,.08)' },
@@ -84,7 +85,7 @@ export default function AutomationsPage() {
   const supabase = getSupabaseClient()
 
   useEffect(() => {
-    supabase.from('automations').select('*').eq('organization_id', ORG_ID)
+    supabase.from('automations').select('*').eq('organization_id', getOrgId())
       .then(({ data }) => {
         setAutomations(data ?? [])
         if (data?.[0] && !selectedId) {
