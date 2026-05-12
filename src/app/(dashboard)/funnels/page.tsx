@@ -10,7 +10,8 @@ import { getSupabaseClient } from '@/lib/supabase/client'
 import type { Funnel } from '@/lib/supabase/types'
 import { Play, Square, Save, ChevronDown } from 'lucide-react'
 
-const ORG_ID = process.env.NEXT_PUBLIC_ORG_ID!
+// org_id from sessionStorage
+function getOrgId() { return sessionStorage.getItem('org_id') || '' }
 
 const nodeTypes_def: Record<string, React.ComponentType<{ data: Record<string, string> }>> = {
   funnelNode: ({ data }) => {
@@ -71,7 +72,7 @@ export default function FunnelsPage() {
   const supabase = getSupabaseClient()
 
   useEffect(() => {
-    supabase.from('funnels').select('*').eq('organization_id', ORG_ID)
+    supabase.from('funnels').select('*').eq('organization_id', getOrgId())
       .then(({ data }) => setFunnels(data ?? []))
   }, [supabase])
 
