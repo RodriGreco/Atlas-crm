@@ -15,7 +15,8 @@ const CHANNEL_LABELS: Record<string, string> = {
   email: 'E-mail', internal: 'Interno',
 }
 
-const ORG_ID = 'a1b2c3d4-0000-0000-0000-000000000001'
+// org_id from sessionStorage
+function getOrgId() { return sessionStorage.getItem('org_id') || '' }
 
 export default function InboxPage() {
   const [conversations, setConversations] = useState<ConversationWithContact[]>([])
@@ -32,7 +33,7 @@ export default function InboxPage() {
     const query = supabase
       .from('conversations')
       .select('*, contacts(id,name,phone,instagram_id,facebook_id,whatsapp_id,lead_score)')
-      .eq('organization_id', ORG_ID)
+      .eq('organization_id', getOrgId())
       .order('updated_at', { ascending: false })
       .limit(50)
 
@@ -69,7 +70,7 @@ export default function InboxPage() {
       .channel('inbox-conversations')
       .on('postgres_changes', {
         event: '*', schema: 'public', table: 'conversations',
-        filter: `organization_id=eq.${ORG_ID}`,
+        filter: `organization_id=eq.${getOrgId()}`,
       }, () => { loadConversations() })
       .subscribe()
 
@@ -103,7 +104,7 @@ export default function InboxPage() {
 
     await supabase.from('messages').insert({
       conversation_id: selectedId,
-      organization_id: ORG_ID,
+      organization_id: getOrgId(),
       sender_type: 'agent',
       content,
       content_type: 'text',
