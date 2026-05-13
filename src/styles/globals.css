@@ -1,38 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Atlas brand v2 — baseado na identidade visual oficial */
-  --atlas-bg-deep:     #080809;
-  --atlas-bg-0:        #0b0b0d;
-  --atlas-bg-1:        #0e0e11;
-  --atlas-bg-2:        #14161a;
-  --atlas-bg-3:        #1a1d23;
-  --atlas-bg-4:        #21252d;
-  --atlas-gold:        #c8a96b;
-  --atlas-gold-2:      #d9bc87;
-  --atlas-gold-3:      #e8d0a0;
-  --atlas-teal:        #0f766e;
-  --atlas-teal-2:      #14958b;
-  --atlas-teal-3:      #1ab5a8;
-  --atlas-navy:        #0d2d3e;
-  --atlas-navy-2:      #133a4f;
-  --border:            rgba(200,169,107,0.14);
-  --border-2:          rgba(200,169,107,0.25);
-  --border-3:          rgba(200,169,107,0.40);
-  --text-1:            #f5f5f5;
-  --text-2:            #a0a0a8;
-  --text-3:            #5a5a66;
-  --green:             #22c55e;
-  --red:               #ef4444;
-  --amber:             #c8a96b;
-  --font:              'Inter', sans-serif;
-  --heading:           'Montserrat', sans-serif;
-  --mono:              'JetBrains Mono', monospace;
-  --radius:            8px;
-  --radius-lg:         12px;
+  /* Atlas brand — identidade visual oficial */
+  --atlas-bg-deep: #080809;
+  --atlas-bg-0: #0b0b0d;
+  --atlas-bg-1: #0e0e11;
+  --atlas-bg-2: #14161a;
+  --atlas-bg-3: #1a1d23;
+  --atlas-bg-4: #21252d;
+  --atlas-gold: #c8a96b;
+  --atlas-gold-2: #d9bc87;
+  --atlas-gold-3: #e8d0a0;
+  --atlas-teal: #0f766e;
+  --atlas-teal-2: #14958b;
+  --atlas-teal-3: #1ab5a8;
+  --atlas-navy: #0d2d3e;
+  --atlas-navy-2: #133a4f;
+
+  /* Aliases curtos usados pelos componentes */
+  --bg-0: var(--atlas-bg-0);
+  --bg-1: var(--atlas-bg-1);
+  --bg-2: var(--atlas-bg-2);
+  --bg-3: var(--atlas-bg-3);
+  --bg-4: var(--atlas-bg-4);
+
+  /* Borders */
+  --border: rgba(200,169,107,0.14);
+  --border-1: rgba(200,169,107,0.18);
+  --border-2: rgba(200,169,107,0.25);
+  --border-3: rgba(200,169,107,0.40);
+
+  /* Text */
+  --text-1: #f5f5f5;
+  --text-2: #a0a0a8;
+  --text-3: #5a5a66;
+
+  /* Accent — roxo/violeta principal */
+  --accent: #6c63ff;
+  --accent-2: #8b85ff;
+  --accent-muted: rgba(108,99,255,0.15);
+
+  /* Semantic colors */
+  --green: #22c55e;
+  --red: #ef4444;
+  --amber: #c8a96b;
+  --cyan: #06d6c8;
+
+  /* Typography */
+  --font: 'Inter', sans-serif;
+  --heading: 'Montserrat', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --radius: 8px;
+  --radius-lg: 12px;
 }
 
 * { box-sizing: border-box; }
@@ -48,7 +70,7 @@ html, body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--atlas-bg-4); border-radius: 2px; }
 
-/* Ambient glow — fundo sutil dourado/navy */
+/* Ambient glow */
 body::before {
   content: '';
   position: fixed;
